@@ -24,6 +24,7 @@ interface TeamData {
   averagePoints: number
   numMatches: number
   averageAuton: number
+  averageDriver: number
   averagePenalty: number
   wins: number
   losses: number
@@ -55,6 +56,9 @@ const HomePage = () => {
               <Th isNumeric>Team Number</Th>
               <Th isNumeric>Average Points</Th>
               <Th isNumeric>Record</Th>
+              <Th isNumeric>Matches</Th>
+              <Th isNumeric>Average Autonomous</Th>
+              <Th isNumeric>Average Teleop</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -65,6 +69,9 @@ const HomePage = () => {
                 <Td isNumeric>
                   {team.wins}-{team.losses}
                 </Td>
+                <Td isNumeric>{team.numMatches}</Td>
+                <Td isNumeric>{team.averageAuton}</Td>
+                <Td isNumeric>{team.averageDriver}</Td>
               </Tr>
             ))}
           </Tbody>
