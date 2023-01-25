@@ -1,4 +1,4 @@
-package com.zackmurry.chessrs.datasource
+package com.zackmurry.sigmatv.datasource
 
 import com.zaxxer.hikari.HikariDataSource
 import org.springframework.boot.context.properties.ConfigurationProperties

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {FormEvent, useState} from 'react'
 import {
   Box,
   Button,
@@ -46,10 +46,46 @@ const AddPage = () => {
     endGame: '0',
     penalty: '0',
   })
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log('submit')
+    const response = await fetch('/api/v1/matches', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name: matchName,
+        teams: {
+          blueTeamOne: Number(teams.blueTeamOne),
+          blueTeamTwo: Number(teams.blueTeamTwo),
+          redTeamOne: Number(teams.redTeamOne),
+          redTeamTwo: Number(teams.redTeamTwo),
+        },
+        blueScore: {
+          score: Number(blueScore.score),
+          autonomous: Number(blueScore.autonomous),
+          driver: Number(blueScore.driver),
+          endGame: Number(blueScore.endGame),
+          penalty: Number(blueScore.penalty),
+        },
+        redScore: {
+          score: Number(redScore.score),
+          autonomous: Number(redScore.autonomous),
+          driver: Number(redScore.driver),
+          endGame: Number(redScore.endGame),
+          penalty: Number(redScore.penalty),
+        },
+      }),
+    })
+    if (response.ok) {
+      window.location.reload()
+    }
+  }
+
   return (
     <Box>
       <Heading>Add match</Heading>
-      <form>
+      <form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Match Name</FormLabel>
           <Input
