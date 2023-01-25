@@ -19,6 +19,10 @@ class MatchController(val matchService: MatchService, val teamService: TeamServi
         teamService.createTeamIfNotExists(req.teams.redTeamOne)
         teamService.createTeamIfNotExists(req.teams.redTeamTwo)
         matchService.createMatch(req)
+        teamService.updateTeamScores(req.teams.blueTeamOne)
+        teamService.updateTeamScores(req.teams.blueTeamTwo)
+        teamService.updateTeamScores(req.teams.redTeamOne)
+        teamService.updateTeamScores(req.teams.redTeamTwo)
     }
 
 }

@@ -4,7 +4,9 @@ CREATE TABLE IF NOT EXISTS team
   average_points INT NOT NULL DEFAULT 0,
   num_matches INT NOT NULL DEFAULT 0,
   average_auton INT NOT NULL DEFAULT 0,
-  average_penalty INT NOT NULL DEFAULT 0
+  average_penalty INT NOT NULL DEFAULT 0,
+  wins INT NOT NULL DEFAULT 0,
+  losses INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS match
