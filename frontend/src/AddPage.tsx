@@ -7,6 +7,7 @@ import {
   FormLabel,
   Heading,
   Input,
+  Text,
 } from '@chakra-ui/react'
 
 interface Teams {
@@ -46,9 +47,31 @@ const AddPage = () => {
     endGame: '0',
     penalty: '0',
   })
+  const [errorMessage, setErrorMessage] = useState<String>('')
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (
+      blueScore.autonomous +
+        blueScore.driver +
+        blueScore.endGame +
+        blueScore.penalty !==
+      blueScore.score
+    ) {
+      setErrorMessage('Blue score must equal the sum of the components')
+      return
+    }
+    if (
+      redScore.autonomous +
+        redScore.driver +
+        redScore.endGame +
+        redScore.penalty !==
+      redScore.score
+    ) {
+      setErrorMessage('Red score must equal the sum of the components')
+      return
+    }
+    setErrorMessage('')
     console.log('submit')
     const response = await fetch('/api/v1/matches', {
       method: 'POST',
@@ -272,6 +295,7 @@ const AddPage = () => {
         <Button mt="15px" type="submit">
           Create
         </Button>
+        <Text color="red">{errorMessage}</Text>
       </form>
     </Box>
   )

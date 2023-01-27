@@ -17,6 +17,9 @@ class TeamService(val teamDao: TeamDao, val matchDao: MatchDao) {
                     0,
                     0,
                     0,
+                    0,
+                    0,
+                    0,
                     0
                 )
             )
@@ -60,10 +63,17 @@ class TeamService(val teamDao: TeamDao, val matchDao: MatchDao) {
         }
         val team = teamOpt.get()
         val numMatches = matches.size
-        team.averagePoints = pointsSum / numMatches
-        team.averageAuton = autonSum / numMatches
-        team.averageDriver = driverSum / numMatches
-        team.averagePenalty = penaltySum / numMatches
+        if (numMatches > 0) {
+            team.averagePoints = pointsSum / numMatches
+            team.averageAuton = autonSum / numMatches
+            team.averageDriver = driverSum / numMatches
+            team.averagePenalty = penaltySum / numMatches
+        } else {
+            team.averagePoints = 0
+            team.averageAuton = 0
+            team.averageDriver = 0
+            team.averagePenalty = 0
+        }
         team.wins = wins
         team.losses = losses
         teamDao.save(team)
