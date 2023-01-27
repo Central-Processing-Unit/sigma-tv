@@ -5,17 +5,19 @@ import './App.css'
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
 import HomePage from './HomePage'
 import AddPage from './AddPage'
+import DeletePage from './DeletePage'
 
 function App() {
   return (
     // ChakraProvider>
     <div>
       <ChakraProvider>
-        <Box mx={{base: '5vw', lg: '30vw'}} my="5vh">
+        <Box mx={{base: '5vw', lg: '20vw'}} my="5vh">
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/add" element={<AddPage />} />
+              <Route path="/delete" element={<DeletePage />} />
             </Routes>
           </BrowserRouter>
         </Box>

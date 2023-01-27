@@ -20,4 +20,5 @@ class Match(
     var redDriver: Int? = null,
     var redEndGame: Int? = null,
     var redBluePenalty: Int? = null,
+    var createdAt: Long? = null
 )

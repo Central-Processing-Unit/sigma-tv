@@ -8,10 +8,13 @@ import java.util.*
 import javax.transaction.Transactional
 
 @Transactional
-interface MatchDao : JpaRepository<Match, UUID> {
+interface MatchDao : JpaRepository<Match, String> {
 
     @Query("SELECT * FROM match WHERE blue_team_one = :teamNumber OR blue_team_two = :teamNumber OR red_team_one = :teamNumber OR red_team_two = :teamNumber", nativeQuery = true)
     fun findByTeamNumber(@Param("teamNumber") teamNumber: Int): List<Match>
+
+    @Query("SELECT * FROM match ORDER BY created_at DESC", nativeQuery = true)
+    fun findAllOrdered(): List<Match>
 
 }
 

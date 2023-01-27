@@ -26,5 +26,6 @@ CREATE TABLE IF NOT EXISTS match
     red_autonomous INT NOT NULL,
     red_driver INT NOT NULL,
     red_end_game INT NOT NULL,
-    red_blue_penalty INT NOT NULL
+    red_blue_penalty INT NOT NULL,
+    created_at BIGINT NOT NULL
 );

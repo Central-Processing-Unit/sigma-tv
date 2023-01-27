@@ -2,6 +2,7 @@ package com.zackmurry.sigmatv.service
 
 import com.zackmurry.sigmatv.dao.MatchDao
 import com.zackmurry.sigmatv.entity.Match
+import com.zackmurry.sigmatv.exception.NotFoundException
 import com.zackmurry.sigmatv.model.MatchCreateRequest
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -29,7 +30,22 @@ class MatchService(val matchDao: MatchDao) {
             req.redScore.driver,
             req.redScore.endGame,
             req.redScore.penalty,
+            System.currentTimeMillis()
         )
         matchDao.save(match)
     }
+
+    fun getAllMatches(): List<Match> {
+        return matchDao.findAllOrdered()
+    }
+
+    fun deleteMatch(name: String) {
+        if (!matchDao.existsById(name)) {
+            throw NotFoundException()
+        }
+        matchDao.deleteById(name)
+    }
+
+    fun getMatch(name: String) = matchDao.findById(name)
+
 }

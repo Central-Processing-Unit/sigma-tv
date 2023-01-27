@@ -31,6 +31,7 @@ class TeamService(val teamDao: TeamDao, val matchDao: MatchDao) {
         val matches = matchDao.findByTeamNumber(number)
         var pointsSum = 0
         var autonSum = 0
+        var driverSum = 0
         var penaltySum = 0
         var wins = 0
         var losses = 0
@@ -38,6 +39,7 @@ class TeamService(val teamDao: TeamDao, val matchDao: MatchDao) {
             if (number == match.blueTeamOne || number == match.blueTeamTwo) {
                 pointsSum += match.blueScore!!
                 autonSum += match.blueAutonomous!!
+                driverSum += match.blueDriver!!
                 penaltySum += match.blueRedPenalty!!
                 if (match.blueScore!! > match.redScore!!) {
                     wins++
@@ -47,6 +49,7 @@ class TeamService(val teamDao: TeamDao, val matchDao: MatchDao) {
             } else {
                 pointsSum += match.redScore!!
                 autonSum += match.redAutonomous!!
+                driverSum += match.blueDriver!!
                 penaltySum += match.redBluePenalty!!
                 if (match.redScore!! > match.blueScore!!) {
                     wins++
@@ -59,6 +62,7 @@ class TeamService(val teamDao: TeamDao, val matchDao: MatchDao) {
         val numMatches = matches.size
         team.averagePoints = pointsSum / numMatches
         team.averageAuton = autonSum / numMatches
+        team.averageDriver = driverSum / numMatches
         team.averagePenalty = penaltySum / numMatches
         team.wins = wins
         team.losses = losses

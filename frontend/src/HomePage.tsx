@@ -1,23 +1,19 @@
 import React, {useEffect, useState} from 'react'
-import logo from './logo.svg'
 import {
   Box,
-  ChakraProvider,
   Flex,
   Heading,
+  Img,
   Table,
   TableCaption,
   TableContainer,
   Tbody,
   Td,
-  Text,
-  Tfoot,
   Th,
   Thead,
   Tr,
 } from '@chakra-ui/react'
 import './App.css'
-import {Link} from 'react-router-dom'
 
 interface TeamData {
   teamNumber: number
@@ -46,8 +42,10 @@ const HomePage = () => {
 
   return (
     <Box>
-      <Heading>Sigma Statistics</Heading>
-      <Link to="/add">Add Match</Link>
+      <Flex justifyContent="space-between">
+        <Heading ml="2vw">Sigma Statistics</Heading>
+        <Img src="/first-logo.png" width="150px" />
+      </Flex>
       <TableContainer>
         <Table variant="simple">
           <TableCaption>Leaderboard</TableCaption>

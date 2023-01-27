@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS team
   average_points INT NOT NULL DEFAULT 0,
   num_matches INT NOT NULL DEFAULT 0,
   average_auton INT NOT NULL DEFAULT 0,
+  average_driver INT NOT NULL DEFAULT 0,
   average_penalty INT NOT NULL DEFAULT 0,
   wins INT NOT NULL DEFAULT 0,
   losses INT NOT NULL DEFAULT 0
@@ -25,5 +26,6 @@ CREATE TABLE IF NOT EXISTS match
     red_autonomous INT NOT NULL,
     red_driver INT NOT NULL,
     red_end_game INT NOT NULL,
-    red_blue_penalty INT NOT NULL
+    red_blue_penalty INT NOT NULL,
+    created_at BIGINT NOT NULL
 );
