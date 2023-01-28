@@ -91,7 +91,7 @@ const AddPage = () => {
   }
 
   return (
-    <Box>
+    <Box mx={{ base: '5vw', lg: '20vw' }}>
       <Heading>Add match</Heading>
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>

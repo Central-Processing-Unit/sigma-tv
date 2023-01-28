@@ -1,18 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import {
-  Box,
-  Flex,
-  Heading,
-  Img,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
+import { Box, Flex, Heading, Img, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import './App.css'
 
 interface TeamData {
@@ -41,13 +28,13 @@ const HomePage = () => {
   }, [])
 
   return (
-    <Box>
-      <Flex justifyContent="space-between">
-        <Heading ml="2vw">Sigma Statistics</Heading>
-        <Img src="/first-logo.png" width="150px" />
+    <Box mx='10vw'>
+      <Flex justifyContent='space-between'>
+        <Heading ml='2vw'>Sigma Statistics</Heading>
+        <Img src='/first-logo.png' width='150px' />
       </Flex>
       <TableContainer>
-        <Table variant="simple">
+        <Table variant='simple'>
           <TableCaption>Leaderboard</TableCaption>
           <Thead>
             <Tr>

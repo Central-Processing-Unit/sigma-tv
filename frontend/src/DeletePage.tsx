@@ -60,7 +60,7 @@ const DeletePage = () => {
   }, [])
 
   return (
-    <Box>
+    <Box mx={{ base: '5vw', lg: '20vw' }}>
       <Flex justifyContent='space-between'>
         <Heading ml='2vw'>Delete Matches</Heading>
         <Img src='/first-logo.png' width='150px' />
