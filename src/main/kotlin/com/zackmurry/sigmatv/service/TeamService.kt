@@ -76,6 +76,7 @@ class TeamService(val teamDao: TeamDao, val matchDao: MatchDao) {
         }
         team.wins = wins
         team.losses = losses
+        team.numMatches = numMatches
         teamDao.save(team)
     }
 

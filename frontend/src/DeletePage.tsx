@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Box,
   Flex,
@@ -12,10 +12,10 @@ import {
   Td,
   Th,
   Thead,
-  Tr,
+  Tr
 } from '@chakra-ui/react'
 import './App.css'
-import {DeleteIcon} from '@chakra-ui/icons'
+import { DeleteIcon } from '@chakra-ui/icons'
 
 interface MatchData {
   matchName: String
@@ -48,7 +48,7 @@ const DeletePage = () => {
 
   const handleDelete = async (matchName: String) => {
     const response = await fetch(`/api/v1/matches/name/${matchName}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
     if (response.ok) {
       window.location.reload()
@@ -61,12 +61,12 @@ const DeletePage = () => {
 
   return (
     <Box>
-      <Flex justifyContent="space-between">
-        <Heading ml="2vw">Delete Matches</Heading>
-        <Img src="/first-logo.png" width="150px" />
+      <Flex justifyContent='space-between'>
+        <Heading ml='2vw'>Delete Matches</Heading>
+        <Img src='/first-logo.png' width='150px' />
       </Flex>
       <TableContainer>
-        <Table variant="simple">
+        <Table variant='simple'>
           <TableCaption>Matches</TableCaption>
           <Thead>
             <Tr>
@@ -83,19 +83,13 @@ const DeletePage = () => {
             {matches.map(match => (
               <Tr key={match.matchName + match.createdAt.toString()}>
                 <Td isNumeric>{match.matchName}</Td>
-                <Td isNumeric>{new Date(match.createdAt).getTime()}</Td>
+                <Td isNumeric>{new Date(match.createdAt).toLocaleString()}</Td>
                 <Td isNumeric>{match.blueScore}</Td>
                 <Td isNumeric>{match.redScore}</Td>
-                <Td isNumeric>
-                  {match.blueTeamOne + ' & ' + match.blueTeamTwo}
-                </Td>
+                <Td isNumeric>{match.blueTeamOne + ' & ' + match.blueTeamTwo}</Td>
                 <Td isNumeric>{match.redTeamOne + ' & ' + match.redTeamTwo}</Td>
                 <Td isNumeric>
-                  <IconButton
-                    aria-label="Delete"
-                    onClick={() => handleDelete(match.matchName)}
-                    icon={<DeleteIcon />}
-                  />
+                  <IconButton aria-label='Delete' onClick={() => handleDelete(match.matchName)} icon={<DeleteIcon />} />
                 </Td>
               </Tr>
             ))}
